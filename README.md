@@ -24,7 +24,7 @@ photo shows a cute placeholder polaroid instead.
 ## Music
 
 - `music/story.mp3` plays (looped) from the moment she opens the envelope until she taps Yes.
-  It is an original synthesised piano loop; replace the file with any mp3 to change it.
+  Replace the file with any mp3 to change it.
 - The ♫ button in the top-right corner turns the music on and off.
 
 ## The last page
