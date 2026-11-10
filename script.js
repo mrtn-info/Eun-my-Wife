@@ -207,8 +207,9 @@
   let hasMp3 = false;
   let yt = null, ytReady = false;
 
-  audio.addEventListener('canplay', () => { hasMp3 = true; songCard.hidden = true; }, { once: true });
-  audio.addEventListener('error', () => { hasMp3 = false; });
+  const mp3Found = () => { hasMp3 = true; songCard.hidden = true; };
+  if (audio.readyState > 0) mp3Found();
+  else audio.addEventListener('loadedmetadata', mp3Found, { once: true });
 
   if (location.protocol.startsWith('http')) {
     window.onYouTubeIframeAPIReady = () => {
@@ -227,7 +228,7 @@
   }
 
   function startSong() {
-    if (hasMp3) {
+    if (hasMp3 || audio.readyState > 0) {
       audio.volume = 0.85;
       audio.play().then(() => { musicBtn.hidden = false; }).catch(() => {});
     } else if (ytReady) {
