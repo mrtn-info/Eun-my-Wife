@@ -315,7 +315,12 @@
 
   /* ---------- YES ---------- */
   yes.addEventListener('click', () => {
-    $('#yes-date').textContent = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+    const fmt = { year: 'numeric', month: 'long', day: 'numeric' };
+    const today = new Date();
+    const until = new Date(today);
+    until.setFullYear(today.getFullYear() + 80);
+    $('#yes-date').textContent = today.toLocaleDateString(undefined, fmt);
+    $('#yes-until').textContent = until.toLocaleDateString(undefined, fmt);
     no.remove();
     startSong();
     go(YAY);

@@ -358,6 +358,7 @@ strong { color: var(--deep-rose); font-weight: 800; }
 .certificate p { max-width: none; margin-bottom: 8px; }
 .cert-title { font-family: "Fraunces", serif; font-weight: 700; font-size: 1.35rem; color: var(--deep-rose); }
 .cert-date { font-family: "Caveat", cursive; font-size: 1.45rem; color: var(--cocoa); }
+.cert-bound { font-size: .95rem; }
 .cert-terms { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mocha); }
 
 /* ---------- favourites collage + song ---------- */
