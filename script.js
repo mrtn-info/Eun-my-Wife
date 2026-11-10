@@ -163,6 +163,82 @@
     }
   });
 
+  /* ---------- favourite photos that pop in on the last page ----------
+     images/fav-1.jpg ... fav-6.jpg (first half fills the left column) */
+  const favBox = $('#favs');
+  const favCaptions = favBox.dataset.captions.split('|');
+  favCaptions.forEach((caption, i) => {
+    const fig = document.createElement('figure');
+    fig.className = 'fav';
+    const img = new Image();
+    img.alt = '';
+    img.onerror = () => fig.remove();
+    img.src = `images/fav-${i + 1}.jpg`;
+    fig.appendChild(img);
+    if (caption) {
+      const cap = document.createElement('figcaption');
+      cap.textContent = caption;
+      fig.appendChild(cap);
+    }
+    favBox.appendChild(fig);
+  });
+
+  function popFavs() {
+    // pop in reading order (left, right, left, right...), each as it scrolls into view
+    const figs = $$('.fav', favBox).sort((a, b) => a.offsetTop - b.offsetTop || a.offsetLeft - b.offsetLeft);
+    let queued = 0;
+    const io = new IntersectionObserver(entries => {
+      entries.filter(e => e.isIntersecting).forEach(e => {
+        io.unobserve(e.target);
+        const wait = 900 + queued++ * 260;
+        setTimeout(() => { e.target.classList.add('pop'); queued = Math.max(0, queued - 1); }, wait);
+      });
+    }, { threshold: 0.15 });
+    figs.forEach(f => io.observe(f));
+  }
+
+  /* ---------- our song ----------
+     If music/passenger-seat.mp3 exists it plays (most reliable on phones).
+     Otherwise the official YouTube video is embedded and started on "yes". */
+  const SONG_YOUTUBE_ID = 'T2oawULBFk0'; // Stephen Speaks - Passenger Seat (Official Lyric Video)
+  const audio = $('#audio');
+  const musicBtn = $('#music');
+  const songCard = $('#song');
+  let hasMp3 = false;
+  let yt = null, ytReady = false;
+
+  audio.addEventListener('canplay', () => { hasMp3 = true; songCard.hidden = true; }, { once: true });
+  audio.addEventListener('error', () => { hasMp3 = false; });
+
+  if (location.protocol.startsWith('http')) {
+    window.onYouTubeIframeAPIReady = () => {
+      yt = new YT.Player('yt', {
+        videoId: SONG_YOUTUBE_ID,
+        playerVars: { playsinline: 1, rel: 0, loop: 1, playlist: SONG_YOUTUBE_ID },
+        events: { onReady: () => { ytReady = true; } },
+      });
+    };
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    tag.onerror = () => { if (!hasMp3) songCard.hidden = true; };
+    document.head.appendChild(tag);
+  } else {
+    songCard.hidden = true;
+  }
+
+  function startSong() {
+    if (hasMp3) {
+      audio.volume = 0.85;
+      audio.play().then(() => { musicBtn.hidden = false; }).catch(() => {});
+    } else if (ytReady) {
+      try { yt.unMute(); yt.playVideo(); } catch (e) { /* she can tap play on the card */ }
+    }
+  }
+  musicBtn.addEventListener('click', () => {
+    if (audio.paused) audio.play(); else audio.pause();
+    musicBtn.classList.toggle('off', audio.paused);
+  });
+
   /* ---------- the runaway "no" button ---------- */
   const yes = $('#yes');
   const no = $('#no');
@@ -240,7 +316,9 @@
   yes.addEventListener('click', () => {
     $('#yes-date').textContent = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
     no.remove();
+    startSong();
     go(YAY);
+    popFavs();
     if (navigator.vibrate) navigator.vibrate([80, 60, 80, 60, 200]);
     celebrate();
   });

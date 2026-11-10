@@ -21,6 +21,13 @@ Drop pictures into `images/` using these names (up to 8 per slot, swipeable):
 add e.g. `bowling-1.mp4` plus an optional `bowling-1.poster.jpg` still (not `.mov`). Any slot without a
 photo shows a cute placeholder polaroid instead.
 
+## The last page
+
+- Favourite photos that pop in: `images/fav-1.jpg` ... `fav-6.jpg`.
+- Song: the official YouTube video is embedded and started when she taps Yes (some phones
+  need one extra tap on the player). For guaranteed autoplay, add your own copy of the
+  song as `music/passenger-seat.mp3`; it is used instead of YouTube when present.
+
 ## Editing the words
 
 All the text lives in `index.html`. The No button's teasing lines are the `TAUNTS`
