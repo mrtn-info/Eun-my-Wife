@@ -288,7 +288,7 @@
     'you can\'t catch it, just like you can\'t get rid of me',
     'okay now you\'re just playing with it 🤨',
     'the yes button is getting impatient...',
-    'I can do this all day, my love',
+    'I can do this all day, my wife',
   ];
   let dodges = 0;
 
