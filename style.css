@@ -362,6 +362,45 @@ strong { color: var(--deep-rose); font-weight: 800; }
 .ending { font-size: 2.2rem; margin: 14px 0 10px; max-width: none; }
 .cert-terms { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mocha); }
 
+/* ---------- bouquet handed over on yes ---------- */
+.bouquet {
+  position: relative; flex: none; width: 240px; height: 250px; margin-bottom: 4px;
+  opacity: 0; transform-origin: 50% 100%;
+}
+.yay.active .bouquet { animation: handOver 1.3s cubic-bezier(.2, 1.25, .4, 1) .35s both, bqSway 4s ease-in-out 1.7s infinite; }
+@keyframes bqSway { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } }
+@keyframes handOver {
+  0% { opacity: 0; transform: translateY(90vh) rotate(-24deg) scale(.7); }
+  30% { opacity: 1; }
+  100% { opacity: 1; transform: none; }
+}
+.bouquet > span { position: absolute; display: block; line-height: 1; }
+.bq-f {
+  left: 50%; top: 0; font-size: 3.6rem; margin-left: -1.8rem;
+  transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0);
+  filter: drop-shadow(0 3px 4px rgba(120, 30, 60, .25));
+}
+.bq-small { font-size: 1.9rem; margin-left: -.95rem; }
+.yay.active .bq-f { animation: bloom .6s cubic-bezier(.3, 1.8, .5, 1) var(--d) both; }
+@keyframes bloom {
+  from { transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0); }
+  to { transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1); }
+}
+.bq-paper { left: 50%; bottom: 0; }
+.bq-back {
+  width: 230px; height: 190px; margin-left: -115px;
+  background: linear-gradient(180deg, #ffc4d4, #ff9dba);
+  clip-path: polygon(0 12%, 22% 0, 50% 10%, 78% 0, 100% 12%, 60% 100%, 40% 100%);
+}
+.bq-front {
+  width: 190px; height: 150px; margin-left: -95px;
+  background: linear-gradient(180deg, #ffb3c8, var(--rose));
+  clip-path: polygon(0 0, 50% 34%, 100% 0, 60% 100%, 40% 100%);
+}
+.bq-bow { left: 50%; bottom: 22px; font-size: 2.6rem; margin-left: -1.3rem; filter: drop-shadow(0 2px 3px rgba(120, 30, 60, .3)); }
+.bq-note { opacity: 0; margin-bottom: 6px; }
+.yay.active .bq-note { animation: rise .7s 2s both; }
+
 /* ---------- favourites collage + song ---------- */
 .favs { width: 100%; columns: 2; column-gap: 12px; margin: 4px 0 18px; }
 .fav {
