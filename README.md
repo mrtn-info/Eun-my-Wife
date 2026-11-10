@@ -18,7 +18,8 @@ Drop pictures into `images/` using these names (up to 8 per slot, swipeable):
 | Painting (date 4) | `painting-1.jpg`, ... |
 | After she says yes | `us-1.jpg`, ... |
 
-`.jpg`, `.jpeg`, `.png` and `.webp` work (not iPhone `.heic`). Any slot without a
+`.jpg`, `.jpeg`, `.png` and `.webp` work (not iPhone `.heic`). Short clips work too:
+add e.g. `bowling-1.mp4` plus an optional `bowling-1.poster.jpg` still (not `.mov`). Any slot without a
 photo shows a cute placeholder polaroid instead.
 
 ## Editing the words

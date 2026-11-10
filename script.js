@@ -48,6 +48,7 @@
     progress.classList.toggle('hidden', idx < 0);
     $$('span', progress).forEach((s, n) => s.classList.toggle('on', n <= idx));
     if (current !== QUESTION) homeNo();
+    playVideos();
     hint();
   }
 
@@ -98,7 +99,7 @@
   /* ---------- photos ----------
      Drop pictures into /images named  <slot>-1.jpg, <slot>-2.jpg ... (up to 8 each)
      slots: aquarium, bowling, park, baking, painting, us
-     .jpg .jpeg .png .webp all work. Slots with no photo show a cute placeholder. */
+     .jpg .jpeg .png .webp all work, and so do short .mp4 clips. Slots with no photo show a cute placeholder. */
   const EXTS = ['jpg', 'jpeg', 'png', 'webp'];
   const MAX_PER_SLOT = 8;
 
@@ -112,13 +113,31 @@
     return fig;
   }
 
+  // tries <base>.jpg/.jpeg/.png/.webp, then a <base>.mp4 clip (poster: <base>.poster.jpg)
   function findImage(base, cb, n = 0) {
-    if (n >= EXTS.length) return;
+    if (n >= EXTS.length) return findVideo(base, cb);
     const img = new Image();
     img.onload = () => cb(img);
     img.onerror = () => findImage(base, cb, n + 1);
     img.alt = '';
     img.src = `${base}.${EXTS[n]}`;
+  }
+
+  function findVideo(base, cb) {
+    const v = document.createElement('video');
+    v.muted = true; v.loop = true; v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+    v.preload = 'metadata';
+    v.poster = `${base}.poster.jpg`;
+    v.onloadedmetadata = () => { v.onloadedmetadata = null; cb(v); };
+    v.src = `${base}.mp4`;
+  }
+
+  function playVideos() {
+    $$('video').forEach(v => {
+      if (v.closest('.page') === pages[current]) v.play().catch(() => {});
+      else v.pause();
+    });
   }
 
   $$('.photos').forEach(box => {
@@ -138,6 +157,8 @@
         found.filter(Boolean).forEach(p => box.appendChild(p));
         box.classList.toggle('many', found.filter(Boolean).length > 1);
         hint();
+        playVideos();
+        box.scrollLeft = 0;
       });
     }
   });
