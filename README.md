@@ -21,6 +21,12 @@ Drop pictures into `images/` using these names (up to 8 per slot, swipeable):
 add e.g. `bowling-1.mp4` plus an optional `bowling-1.poster.jpg` still (not `.mov`). Any slot without a
 photo shows a cute placeholder polaroid instead.
 
+## Music
+
+- `music/story.mp3` plays (looped) from the moment she opens the envelope until she taps Yes.
+  It is an original synthesised piano loop; replace the file with any mp3 to change it.
+- The ♫ button in the top-right corner turns the music on and off.
+
 ## The last page
 
 - Favourite photos that pop in: `images/fav-1.jpg` ... `fav-6.jpg`.

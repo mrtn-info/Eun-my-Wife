@@ -93,6 +93,7 @@
   envelope.addEventListener('click', () => {
     if (envelope.classList.contains('open')) return;
     envelope.classList.add('open');
+    startStoryMusic();
     setTimeout(() => go(1), 1500);
   });
 
@@ -228,16 +229,48 @@
   }
 
   function startSong() {
+    stopStoryMusic();
     if (hasMp3 || audio.readyState > 0) {
       audio.volume = 0.85;
-      audio.play().then(() => { musicBtn.hidden = false; }).catch(() => {});
+      nowPlaying = audio;
+      audio.play().then(() => { musicBtn.hidden = false; musicBtn.classList.remove('off'); }).catch(() => {});
     } else if (ytReady) {
       try { yt.unMute(); yt.playVideo(); } catch (e) { /* she can tap play on the card */ }
     }
   }
+  /* ---------- story music (plays from the envelope until she says yes) ---------- */
+  const bgm = $('#bgm');
+  let nowPlaying = null;   // whichever track the music button controls
+  let userPaused = false;
+
+  function startStoryMusic() {
+    bgm.volume = 0.55;
+    nowPlaying = bgm;
+    bgm.play().then(() => { musicBtn.hidden = false; }).catch(() => {});
+  }
+
+  function stopStoryMusic() {
+    // fade where the phone allows it (iPhones ignore volume), then stop
+    let v = bgm.volume;
+    const fade = setInterval(() => {
+      v -= 0.08;
+      if (v <= 0) { clearInterval(fade); bgm.pause(); }
+      else bgm.volume = v;
+    }, 60);
+    setTimeout(() => bgm.pause(), 900);
+  }
+
   musicBtn.addEventListener('click', () => {
-    if (audio.paused) audio.play(); else audio.pause();
-    musicBtn.classList.toggle('off', audio.paused);
+    if (!nowPlaying) return;
+    userPaused = !nowPlaying.paused;
+    if (userPaused) nowPlaying.pause(); else nowPlaying.play().catch(() => {});
+    musicBtn.classList.toggle('off', userPaused);
+  });
+
+  // don't keep playing when she switches apps or locks the phone
+  document.addEventListener('visibilitychange', () => {
+    if (!nowPlaying || userPaused) return;
+    if (document.hidden) nowPlaying.pause(); else nowPlaying.play().catch(() => {});
   });
 
   /* ---------- the runaway "no" button ---------- */
