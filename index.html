@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffdbe5">
+  <title>A little something for you 💌</title>
+  <meta name="description" content="Open me. It's important.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="hearts-bg" aria-hidden="true"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <div id="progress" aria-hidden="true"></div>
+
+  <main id="book">
+
+    <!-- 0 · COVER -->
+    <section class="page cover" data-nav="none">
+      <p class="hand rise">a letter, sealed with love</p>
+      <button id="envelope" class="envelope rise" aria-label="Open the letter">
+        <span class="env-back"></span>
+        <span class="env-letter"><span>for Eun</span></span>
+        <span class="env-front"></span>
+        <span class="env-flap"></span>
+        <span class="env-seal">♥</span>
+      </button>
+      <h1 class="rise">For my favorite girl</h1>
+      <p class="tap-hint rise">tap the heart to open</p>
+    </section>
+
+    <!-- 1 · INTRO -->
+    <section class="page" data-nav="story">
+      <div class="big-emoji rise">🥺💗</div>
+      <h2 class="rise">Hi, my love.</h2>
+      <p class="rise">I have a very important question to ask you.</p>
+      <p class="rise">But before I do, come with me for a minute. I want to walk you back through our little story so far, one date at a time.</p>
+      <p class="hand rise">hold my hand, okay? here we go →</p>
+    </section>
+
+    <!-- 2 · AQUARIUM -->
+    <section class="page" data-nav="story">
+      <div class="scene scene-aquarium rise" aria-hidden="true">
+        <span class="fish f1">🐠</span><span class="fish f2">🐟</span><span class="fish f3">🐡</span>
+        <span class="jelly">🪼</span>
+        <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span><span class="bubble b4"></span><span class="bubble b5"></span>
+        <span class="weed w1">🌿</span><span class="weed w2">🪸</span>
+      </div>
+      <p class="chapter rise">Chapter one</p>
+      <h2 class="rise">The Aquarium</h2>
+      <div class="photos rise" data-photos="aquarium" data-emoji="🐠" data-caption="our first date"></div>
+      <p class="rise">Our very first date. I was so nervous, and you made it feel so easy.</p>
+      <p class="rise">Thank you for giving me your whole day. And when the sky decided to rain on us while we walked to the park after, you just kept walking right beside me. ☔</p>
+      <p class="hand rise">you braved the weather for me. I knew then you were special.</p>
+    </section>
+
+    <!-- 3 · BOWLING -->
+    <section class="page" data-nav="story">
+      <div class="scene scene-bowling rise" aria-hidden="true">
+        <div class="lane"></div>
+        <span class="ball"></span>
+        <span class="pin p1"></span><span class="pin p2"></span><span class="pin p3"></span>
+        <span class="strike">STRIKE!</span>
+      </div>
+      <p class="chapter rise">Chapter two</p>
+      <h2 class="rise">Bowling</h2>
+      <div class="photos rise" data-photos="bowling" data-emoji="🎳" data-caption="the bowling queen"></div>
+      <p class="rise">You were <em>so</em> good. And the best part? You were completely nonchalant about it, like being amazing is just a normal day for you. 😮‍💨</p>
+      <p class="rise">And you showed up for me on little to no sleep. You could have stayed in bed. You chose me instead.</p>
+      <p class="hand rise">I noticed. I appreciate you more than you know.</p>
+    </section>
+
+    <!-- 4 · CDC PARK -->
+    <section class="page" data-nav="story">
+      <div class="scene scene-park rise" aria-hidden="true">
+        <span class="moon">🌙</span>
+        <span class="star s1">✦</span><span class="star s2">✦</span><span class="star s3">✧</span><span class="star s4">✦</span><span class="star s5">✧</span><span class="star s6">✦</span>
+        <span class="tree t1">🌳</span><span class="tree t2">🌳</span>
+        <span class="couple">🧍‍♂️🧍‍♀️</span>
+        <span class="lil-heart h1">♥</span><span class="lil-heart h2">♥</span>
+        <div class="ground"></div>
+      </div>
+      <p class="chapter rise">Still chapter two</p>
+      <h2 class="rise">CDC Park</h2>
+      <p class="rise">Then came my favorite part of that day: our first long talk. Just you, me, and the park.</p>
+      <p class="rise">I could have listened to you for hours. I absolutely cherish that conversation, and I replay it more often than I'd like to admit.</p>
+      <p class="cheeky rise">so please don't let anyone else kiss you 😌💋</p>
+    </section>
+
+    <!-- 5 · BAKING -->
+    <section class="page" data-nav="story">
+      <div class="scene scene-baking rise" aria-hidden="true">
+        <span class="steam st1">♥</span><span class="steam st2">♥</span><span class="steam st3">♥</span>
+        <span class="bake k1">🥣</span><span class="bake k2">🧁</span><span class="bake k3">🍪</span><span class="bake k4">🧈</span>
+        <div class="counter"></div>
+      </div>
+      <p class="chapter rise">Chapter three</p>
+      <h2 class="rise">Baking</h2>
+      <div class="photos rise" data-photos="baking" data-emoji="🧁" data-caption="sweetest day"></div>
+      <p class="rise">Our third date was so special to me. Flour everywhere, you next to me, and my heart doing the absolute most.</p>
+      <p class="rise">Because that was the day I finally got to say it out loud:</p>
+      <p class="iloveyou rise">I love you.</p>
+      <p class="hand rise">and I have meant it every single day since.</p>
+    </section>
+
+    <!-- 6 · PAINTING -->
+    <section class="page" data-nav="story">
+      <div class="scene scene-painting rise" aria-hidden="true">
+        <span class="splat sp1"></span><span class="splat sp2"></span><span class="splat sp3"></span><span class="splat sp4"></span>
+        <span class="easel">🖼️</span><span class="palette">🎨</span><span class="brush">🖌️</span>
+      </div>
+      <p class="chapter rise">Chapter four</p>
+      <h2 class="rise">Painting</h2>
+      <div class="photos rise" data-photos="painting" data-emoji="🎨" data-caption="still a masterpiece"></div>
+      <p class="rise">Okay... date four did not exactly go to plan. 😅 Not my finest work.</p>
+      <p class="rise">But even on the day that went wrong, you still looked at me and said <strong>yes</strong> to being my girl.</p>
+      <p class="hand rise">that's when I knew: it's you, on the good days and the messy ones.</p>
+    </section>
+
+    <!-- 7 · LETTER -->
+    <section class="page" data-nav="story">
+      <div class="big-emoji rise">💌</div>
+      <h2 class="rise">So here we are.</h2>
+      <p class="rise">Four dates. One rainy walk, one strike queen, one long talk, one "I love you," and one painting we will never speak of again.</p>
+      <p class="rise">And somewhere in all of it, I fell completely, hopelessly in love with you.</p>
+      <p class="rise">You already said yes once. This is me asking properly, with my whole heart, if you are ready to give me all of your love, and take all of mine.</p>
+      <p class="hand rise">deep breath... one last page →</p>
+    </section>
+
+    <!-- 8 · THE QUESTION -->
+    <section class="page question" data-nav="back">
+      <div class="big-emoji beat rise">💗</div>
+      <p class="chapter rise">The official confirmation</p>
+      <h2 class="rise">Will you be my girlfriend?</h2>
+      <p class="rise">Do you accept all of my love, and promise to give me all of yours?</p>
+      <div class="answers rise">
+        <button id="yes" class="btn-yes">YES! 💖</button>
+        <button id="no" class="btn-no">no</button>
+      </div>
+      <p id="taunt" class="hand taunt rise" aria-live="polite">&nbsp;</p>
+    </section>
+
+    <!-- 9 · SHE SAID YES -->
+    <section class="page yay" data-nav="none">
+      <div class="big-emoji beat rise">💞</div>
+      <h2 class="rise">She said yes!!!</h2>
+      <div id="song" class="song rise">
+        <p class="chapter">our song ♫</p>
+        <div class="song-frame"><div id="yt"></div></div>
+      </div>
+      <p class="hand rise">my favorite girl, in my favorite photos</p>
+      <div id="favs" class="favs" data-captions="||||the cutest since day one|"></div>
+      <div class="photos rise" data-photos="us" data-emoji="👩‍❤️‍👨" data-caption="us ♥"></div>
+      <div class="certificate rise">
+        <p class="cert-title">Certificate of Being Mine</p>
+        <p>This certifies that <strong>Eun</strong> is officially my girlfriend, and that <strong>Martin</strong> is completely, entirely hers.</p>
+        <p class="cert-date">made official on <span id="yes-date"></span></p>
+        <p class="cert-bound">By saying yes, you and I are now bound together for the next <strong>80 years</strong>.</p>
+        <p class="cert-date">valid until <span id="yes-until"></span></p>
+        <p class="cert-bound">And in 80 years, if you still want me, you can renew for another 80.<br><span style="white-space:nowrap">(please renew 🥺)</span></p>
+        <p class="cert-terms">terms: unlimited hugs · all my love · no returns, no refunds</p>
+      </div>
+      <p class="rise">I love you so much. Thank you for choosing me. I promise to choose you right back, every single day.</p>
+      <p class="hand rise">now screenshot this and send it to me so I can scream 🥹<br>forever yours, Martin ♥</p>
+    </section>
+
+  </main>
+
+  <div id="more" class="hidden" aria-hidden="true">scroll ↓</div>
+
+  <button id="music" class="music" hidden aria-label="Music on or off">♫</button>
+  <audio id="audio" src="music/passenger-seat.mp3" loop preload="auto"></audio>
+
+  <nav id="nav">
+    <button id="back" class="nav-back" aria-label="Previous page">←</button>
+    <button id="next" class="nav-next">Next <span>♥</span></button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
