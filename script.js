@@ -96,11 +96,11 @@
   });
 
   /* ---------- photos ----------
-     Drop pictures into /images named  <slot>-1.jpg, <slot>-2.jpg ... (up to 4 each)
+     Drop pictures into /images named  <slot>-1.jpg, <slot>-2.jpg ... (up to 8 each)
      slots: aquarium, bowling, park, baking, painting, us
      .jpg .jpeg .png .webp all work. Slots with no photo show a cute placeholder. */
   const EXTS = ['jpg', 'jpeg', 'png', 'webp'];
-  const MAX_PER_SLOT = 4;
+  const MAX_PER_SLOT = 8;
 
   function polaroid(inner, caption) {
     const fig = document.createElement('figure');

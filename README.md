@@ -7,7 +7,7 @@ Plain HTML/CSS/JS, no build step. Open `index.html`, or host it with GitHub Page
 
 ## Adding photos
 
-Drop pictures into `images/` using these names (up to 4 per slot, swipeable):
+Drop pictures into `images/` using these names (up to 8 per slot, swipeable):
 
 | Page | File names |
 | --- | --- |
