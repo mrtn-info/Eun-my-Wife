@@ -13,7 +13,6 @@ Drop pictures into `images/` using these names (up to 8 per slot, swipeable):
 | --- | --- |
 | Aquarium (date 1) | `aquarium-1.jpg`, `aquarium-2.jpg`, ... |
 | Bowling (date 2) | `bowling-1.jpg`, ... |
-| CDC Park | `park-1.jpg`, ... |
 | Baking (date 3) | `baking-1.jpg`, ... |
 | Painting (date 4) | `painting-1.jpg`, ... |
 | After she says yes | `us-1.jpg`, ... |
